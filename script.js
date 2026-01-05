@@ -12,11 +12,20 @@ let pulseIntervals = [];
 
 // Run OSINT for multiple IPs
 function runOSINT() {
-    const input = document.getElementById("ipInput").value.trim();
-    if(!input) { alert("Enter IP(s)"); return; }
+    const textarea = document.getElementById("ipInput");
+    const input = textarea.value.trim();
+    if (!input) {
+        alert("Enter IP(s)");
+        return;
+    }
 
-   const ips = input.split(/\r?\n/).map(ip => ip.trim()).filter(ip);
+    // Split by newlines
+    const ips = input.split(/\r?\n/).map(ip => ip.trim()).filter(ip => ip);
 
+    // Dynamic textarea resizing
+    textarea.rows = ips.length > 1 ? ips.length : 2;
+
+    // Clear previous results
     markers.forEach(m => map.removeLayer(m));
     markers = [];
     pulseIntervals.forEach(i => clearInterval(i));
@@ -142,4 +151,5 @@ function displayOSINTCategories(ip) {
         container.appendChild(section);
     }
 }
+
 
