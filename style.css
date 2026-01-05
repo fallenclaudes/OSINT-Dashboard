@@ -1,0 +1,148 @@
+/* ===== General Body & Layout ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    background: #0b0c10;
+    overflow-x: hidden;
+}
+
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    color: #fff;
+}
+
+/* ===== Header ===== */
+h2 {
+    color: #ff4c4c;
+    text-shadow: 0 0 8px #ff1a1a;
+}
+
+/* ===== Cards ===== */
+.card {
+    background-color: rgba(0,0,0,0.75);
+    color: #fff;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255,20,20,0.5);
+}
+
+/* ===== Map ===== */
+#map { 
+    height: 300px; 
+    margin-top: 20px; 
+    border-radius: 8px; 
+    border: 1px solid #1f1f1f; 
+}
+
+/* ===== Buttons ===== */
+.btn-outline-primary { 
+    color: #fd4444; 
+    border-color: #ff4c4c; 
+    transition: all 0.2s;
+}
+
+.btn-outline-primary:hover { 
+    background-color: #fa1717; 
+    color: #fff; 
+    transform: scale(1.05);
+}
+
+/* Remove blue outline/glow for all buttons including dynamically generated ones */
+.btn,
+.btn:focus,
+.btn:active,
+.btn:hover,
+a.btn,
+a.btn:focus,
+a.btn:active,
+a.btn:hover {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ===== Input ===== */
+.input-group .form-control::placeholder {
+    color: #ff6b6b;  /* subtle red */
+    opacity: 1;   
+}
+
+.input-group .form-control:focus {
+    box-shadow: 0 0 5px #ff4c4c;
+    border-color: #ff4c4c;
+}
+
+.input-group .btn-primary {
+    background-color: #ff1a1a;
+    border: 1px solid #ff4c4c;
+    transition: all 0.2s;
+}
+
+.input-group .btn-primary:hover {
+    background-color: #ff4c4c;
+    border-color: #ff1a1a;
+    transform: scale(1.05);
+}
+
+/* ===== OSINT Buttons Wrapper ===== */
+#osintLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* OSINT Section Headers */
+.osint-section {
+    border-bottom: 1px solid #ff4c4c;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.osint-section p {
+    color: #ff4c4c;
+    margin-bottom: 5px;
+}
+/* Remove all Bootstrap outline & hover styles for OSINT buttons */
+#osintLinks a.btn {
+    background-color: transparent;  /* no fill */
+    color: #ff4c4c;                 /* red text */
+    border: 1px solid #ff4c4c;      /* red border */
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 3px 8px;
+    transition: all 0.2s;
+}
+
+#osintLinks a.btn:hover {
+    background-color: #ff1a1a;      /* red fill on hover */
+    color: #fff;
+    transform: scale(1.05);
+}
+
+#osintLinks a.btn:focus,
+#osintLinks a.btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* ===== IP Info ===== */
+#ipinfoCard p {
+    margin: 4px 0;
+}
