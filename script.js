@@ -15,7 +15,7 @@ function runOSINT() {
     const input = document.getElementById("ipInput").value.trim();
     if(!input) { alert("Enter IP(s)"); return; }
 
-    const ips = input.split(',').map(ip => ip.trim()).filter(ip => ip);
+   const ips = input.split(/\r?\n/).map(ip => ip.trim()).filter(ip);
 
     markers.forEach(m => map.removeLayer(m));
     markers = [];
