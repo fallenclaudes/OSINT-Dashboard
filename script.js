@@ -111,13 +111,11 @@ function displayOSINTCategories(ip) {
         ],
         "Domain/URL": [
             {name: "URLVoid", url: `https://www.urlvoid.com/scan/${ip}/`},
-            {name: "SecuriSiteCheck", url: `https://sitecheck.sucuri.net/results/${ip}`},
-            
+            {name: "SecuriSiteCheck", url: `https://sitecheck.sucuri.net/results/${ip}`}
         ],
         "Threat Intel Platforms": [
             {name: "Xforce", url: `https://exchange.xforce.ibmcloud.com/ip/${ip}`},
-            {name: "OTX", url: `https://otx.alienvault.com/indicator/ip/${ip}`},
-        
+            {name: "OTX", url: `https://otx.alienvault.com/indicator/ip/${ip}`}
         ],
         "Threat Enrichment": [
             {name: "ThreatCrowd", url: `https://www.threatcrowd.org/ip.php?ip=${ip}`},
@@ -131,25 +129,37 @@ function displayOSINTCategories(ip) {
         ]
     };
 
-    for (const [cat, tools] of Object.entries(categories)) {
-        const section = document.createElement("div");
-        section.className = "osint-section";
+    // Create a single section per IP
+    const section = document.createElement("div");
+    section.className = "osint-section";
 
-        const title = document.createElement("p");
-        title.innerHTML = `<strong>${ip} - ${cat}</strong>`;
-        section.appendChild(title);
+    const title = document.createElement("p");
+    title.innerHTML = `<strong>${ip}</strong>`; // single IP header
+    section.appendChild(title);
+
+    // Loop through categories and add buttons inside the same section
+    for (const [cat, tools] of Object.entries(categories)) {
+        const catTitle = document.createElement("small");
+        catTitle.style.fontWeight = "bold";
+        catTitle.style.color = "#ff4c4c";
+        catTitle.innerText = cat;
+        section.appendChild(catTitle);
 
         tools.forEach(tool => {
             const btn = document.createElement("a");
-            btn.className = "btn btn-sm m-1"; // keep custom styling, remove Bootstrap outline
+            btn.className = "btn btn-sm m-1";
             btn.target = "_blank";
             btn.href = tool.url;
             btn.innerText = tool.name;
             section.appendChild(btn);
         });
 
-        container.appendChild(section);
+        section.appendChild(document.createElement("br")); // spacing after each category
     }
+
+    container.appendChild(section);
 }
+
+
 
 
